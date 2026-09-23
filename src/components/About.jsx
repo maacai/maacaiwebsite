@@ -195,10 +195,10 @@ export default function About() {
       <RevealWrapper variant="up" className="about-mission">
         <div className="about-mission-inner">
           <div className="mission-tag">OUR MISSION</div>
-          <h2 className="about-section-h2">
+          <h2 className="about-section-h2 center">
             Building a <em className="gradient-text">Smarter Tomorrow</em>,<br />Together
           </h2>
-          <p className="about-mission-text">
+          <p className="about-mission-text" style={{ textAlign: 'center' }}>
             MAAC AI was founded on one powerful belief — that technology should work
             <em> for</em> people, not the other way around. Our mission is to bridge the gap
             between cutting-edge AI and everyday business needs, delivering solutions that

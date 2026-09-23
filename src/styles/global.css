@@ -1046,9 +1046,10 @@ footer {
 /* ── Hero ───────────────────────────────────────────────────── */
 .about-hero {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: minmax(0, 560px) minmax(0, 640px);
+  justify-content: center;
   align-items: center;
-  gap: 0;
+  gap: 4vw;
   min-height: 540px;
   padding: 100px 6vw 0;
   background: radial-gradient(circle at 20% 50%, rgba(64,88,255,.06) 0%, transparent 55%),
@@ -1203,9 +1204,12 @@ footer {
   background: linear-gradient(180deg, #fff 0%, #f7f9ff 100%);
 }
 .about-mission-inner {
-  max-width: 860px;
+  max-width: 1140px;
   margin: 0 auto;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 .mission-tag {
   display: inline-block;
@@ -1224,6 +1228,7 @@ footer {
   margin: 0 auto 42px;
 }
 .mission-pillars {
+  width: 100%;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 20px;
@@ -1448,7 +1453,7 @@ footer {
   font-weight: 800;
   letter-spacing: -.05em;
   line-height: 1.05;
-  color: var(--ink);
+  color: #000 !important;
   margin: 0 0 18px;
 }
 .about-cta-sub {
