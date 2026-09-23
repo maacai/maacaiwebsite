@@ -1,0 +1,1 @@
+.scroll-progress{position:fixed;top:0;left:0;right:0;height:3px;z-index:2000;pointer-events:none;background:transparent}.scroll-progress::after{content:"";display:block;width:var(--scroll-progress);height:100%;background:linear-gradient(90deg,#e91e8c,#7c3aed,#2563eb);box-shadow:0 0 14px rgba(124,58,237,.35);transition:width .08s linear}

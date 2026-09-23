@@ -1,0 +1,46 @@
+.industries-section {
+  padding: 80px 0;
+  background: white;
+}
+
+.industries-section__header {
+  margin-bottom: 48px;
+}
+
+.industries-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  justify-content: center;
+}
+
+.industry-chip {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 22px;
+  border-radius: 50px;
+  border: 1.5px solid var(--border);
+  background: var(--bg-light);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-dark);
+  transition: all 0.25s;
+  cursor: pointer;
+}
+
+.industry-chip:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+  background: rgba(233,30,140,0.05);
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(233,30,140,0.12);
+}
+
+.industry-chip__icon {
+  font-size: 18px;
+}
+
+.industry-chip__label {
+  white-space: nowrap;
+}

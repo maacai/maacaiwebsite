@@ -1,0 +1,62 @@
+.why-choose {
+  padding: 80px 0;
+  background: white;
+}
+
+.why-choose__header { margin-bottom: 56px; }
+
+.why-choose__grid {
+  display: grid;
+  grid-template-columns: repeat(9, 1fr);
+  gap: 20px;
+}
+
+.why-card {
+  text-align: center;
+  padding: 24px 12px;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  background: white;
+  transition: all 0.3s;
+  cursor: pointer;
+}
+
+.why-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--card-color);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+}
+
+.why-card__icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 14px;
+  font-size: 22px;
+  transition: transform 0.3s;
+}
+
+.why-card:hover .why-card__icon { transform: scale(1.15) rotate(-3deg); }
+
+.why-card__title {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 6px;
+}
+
+.why-card__desc {
+  font-size: 11px;
+  color: var(--text-gray);
+  line-height: 1.4;
+}
+
+@media (max-width: 1100px) {
+  .why-choose__grid { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 600px) {
+  .why-choose__grid { grid-template-columns: repeat(2, 1fr); }
+}

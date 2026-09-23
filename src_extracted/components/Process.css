@@ -1,0 +1,151 @@
+.process-section {
+  padding: 80px 0;
+  background: var(--bg-light);
+  overflow: hidden;
+}
+
+.process-section__header {
+  margin-bottom: 72px;
+}
+
+/* ── Track container ── */
+.process-track {
+  position: relative;
+  display: flex;
+  align-items: center;        /* vertically centre every flex child */
+  justify-content: space-between;
+  padding: 0 8px;
+}
+
+/* ── Gradient connecting line ── */
+.process-line {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 3px;
+  transform: translateY(-50%);
+  background: linear-gradient(90deg, var(--primary), var(--secondary));
+  border-radius: 3px;
+  z-index: 0;
+}
+
+/* ── Each step column ── */
+.process-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  position: relative;
+  z-index: 1;
+  /* equal above + below space so circles all sit on the same axis */
+  min-height: 180px;
+  justify-content: center;
+}
+
+/* ── Number circle ── */
+.process-step__circle {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--primary), var(--accent));
+  color: #fff;
+  font-size: 11px;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 16px rgba(233, 30, 140, 0.35);
+  border: 3px solid white;
+  flex-shrink: 0;
+  transition: transform 0.3s;
+  position: relative;
+  z-index: 2;
+}
+
+.process-step:hover .process-step__circle {
+  transform: scale(1.15);
+}
+
+/* ── Text label blocks ── */
+.process-step__content {
+  text-align: center;
+  max-width: 88px;
+}
+
+/* Sits above the circle */
+.process-step__content--above {
+  order: -1;              /* renders before the circle in DOM order */
+  margin-bottom: 14px;
+}
+
+/* Sits below the circle */
+.process-step__content--below {
+  margin-top: 14px;
+}
+
+/* Invisible placeholder keeps column heights balanced */
+.process-step__content--hidden {
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.process-step__title {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 4px;
+  line-height: 1.3;
+}
+
+.process-step__desc {
+  font-size: 10px;
+  color: var(--text-gray);
+  line-height: 1.45;
+}
+
+/* ── Responsive: stack vertically ── */
+@media (max-width: 900px) {
+  .process-track {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+    padding: 0;
+  }
+
+  .process-line {
+    top: 0;
+    bottom: 0;
+    left: 23px;
+    right: auto;
+    width: 3px;
+    height: auto;
+    transform: none;
+  }
+
+  .process-step {
+    flex-direction: row;
+    min-height: auto;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 16px 0 16px 0;
+    justify-content: flex-start;
+  }
+
+  .process-step__circle {
+    flex-shrink: 0;
+    order: 0;
+  }
+
+  .process-step__content--above,
+  .process-step__content--below {
+    order: 1;
+    margin: 0;
+    text-align: left;
+    max-width: none;
+  }
+
+  .process-step__content--hidden {
+    display: none;
+  }
+}

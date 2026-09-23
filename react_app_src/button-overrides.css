@@ -1,0 +1,19 @@
+/* MAAC AI Vercel Button Animations */
+.pill {
+  transition: transform .28s, box-shadow .28s, background .28s, border-color .28s, color .28s !important;
+  will-change: transform;
+}
+.pill:hover {
+  transform: translateY(-3px) !important;
+  box-shadow: 0 15px 32px rgba(64, 88, 255, 0.3) !important;
+}
+.pill:active {
+  transform: translateY(0) !important;
+}
+.pill .btn-arrow, .pill .btn-icon {
+  display: inline-block;
+  transition: transform .28s !important;
+}
+.pill:hover .btn-arrow, .pill:hover .btn-icon {
+  transform: translateX(4px);
+}
