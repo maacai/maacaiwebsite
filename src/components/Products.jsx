@@ -3,12 +3,24 @@ import { products } from '../data/products';
 import Button from './Button';
 import RevealWrapper from './RevealWrapper';
 
-export default function Products() {
+export default function Products({ isHomePage = false }) {
   const featuredProduct = products[0]; // Mine Healer
   const futureProducts = products.slice(1, 9); // Limit to grid size
 
   return (
-    <section id="products" className="section products" aria-label="Featured Products">
+    <section id="products" className={`section products ${!isHomePage ? 'about-page' : ''}`} aria-label="Featured Products">
+      {!isHomePage && (
+        <div style={{ width: '100%', marginBottom: '80px', marginTop: '20px' }}>
+          <RevealWrapper variant="up">
+            <img 
+              src="/assets/images/products-hero-banner.png" 
+              alt="Products Hero Banner" 
+              style={{ width: '100%', height: 'auto', display: 'block', borderRadius: '24px' }} 
+            />
+          </RevealWrapper>
+        </div>
+      )}
+
       <div className="products-container">
         {/* Left Side: Featured Product */}
         <RevealWrapper variant="left" className="featured-product-card">

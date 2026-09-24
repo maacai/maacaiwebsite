@@ -24,7 +24,7 @@ function IndustryCard({ icon, name, onCardClick }) {
   );
 }
 
-export default function Industries({ openModal }) {
+export default function Industries({ openModal, isHomePage = false }) {
   const railRef = useRef(null);
   const [activeIndex, setActiveIndex] = useState(0);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
@@ -88,15 +88,27 @@ export default function Industries({ openModal }) {
   }, [getMaxScroll, updateControls]);
 
   return (
-    <section id="industries" className="section industries" aria-label="Industries we empower">
-      <RevealWrapper variant="up">
-        <div className="eyebrow">INDUSTRIES WE EMPOWER</div>
-        <h2>We Serve a Wide Range of <em>Industries</em></h2>
-        <p className="lead">
-          Innovative solutions tailored for every industry, helping businesses transform,
-          grow, and stay ahead in a digital world.
-        </p>
-      </RevealWrapper>
+    <section id="industries" className={`section industries ${!isHomePage ? 'about-page' : ''}`} aria-label="Industries we empower">
+      {!isHomePage ? (
+        <div style={{ width: '100%', marginBottom: '80px', marginTop: '20px' }}>
+          <RevealWrapper variant="up">
+            <img 
+              src="/assets/images/industries-hero-banner.png" 
+              alt="Industries Hero Banner" 
+              style={{ width: '100%', height: 'auto', display: 'block', borderRadius: '24px' }} 
+            />
+          </RevealWrapper>
+        </div>
+      ) : (
+        <RevealWrapper variant="up">
+          <div className="eyebrow">INDUSTRIES WE EMPOWER</div>
+          <h2>We Serve a Wide Range of <em>Industries</em></h2>
+          <p className="lead">
+            Innovative solutions tailored for every industry, helping businesses transform,
+            grow, and stay ahead in a digital world.
+          </p>
+        </RevealWrapper>
+      )}
 
       <RevealWrapper variant="up" delay={200} className="rail-wrap">
         <button

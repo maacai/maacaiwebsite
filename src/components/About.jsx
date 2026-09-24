@@ -6,7 +6,7 @@ import RevealWrapper from './RevealWrapper';
 const STATS = [
   { icon: '📦', value: '50+', label: 'Projects Delivered' },
   { icon: '🌐', value: '20+', label: 'Global Clients' },
-  { icon: '💡', value: '3+',  label: 'Years of Innovation' },
+  { icon: '💡', value: '3+', label: 'Years of Innovation' },
   { icon: '📈', value: '100%', label: 'Commitment to Your Growth' },
 ];
 

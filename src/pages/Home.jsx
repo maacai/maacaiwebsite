@@ -79,11 +79,11 @@ export default function Home() {
     <>
       <main id="main-content">
         <Hero />
-        <About />
-        <Industries openModal={openModal} />
+        <About isHomePage={true} />
+        <Industries openModal={openModal} isHomePage={true} />
         <BeyondSection />
-        <Services />
-        <Products />
+        <Services isHomePage={true} />
+        <Products isHomePage={true} />
         <Contact />
       </main>
       <Modal
