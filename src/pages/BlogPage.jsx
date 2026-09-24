@@ -21,25 +21,38 @@ export default function BlogPage() {
         </RevealWrapper>
       </div>
 
-      <div className="service-grid" style={{ padding: '0 5%', marginBottom: '8rem', maxWidth: '1280px', margin: '0 auto 8rem' }}>
-        {blogs.map((blog, idx) => (
-          <RevealWrapper variant="up" delay={idx * 100} key={blog.id}>
-            <div className="service-card" style={{ display: 'flex', flexDirection: 'column' }}>
-              <span className="tilt-shine" aria-hidden="true" />
-              <Link to={`/blog/${blog.id}`} className="service-card-link" style={{ flex: 1, display: 'flex', flexDirection: 'column' }}>
-                <div style={{ marginBottom: '1rem', fontSize: '0.85rem', color: '#888', display: 'flex', gap: '1rem' }}>
-                  <span>{blog.date}</span>
-                  <span style={{ color: '#3858ff' }}>{blog.category}</span>
+      <div className="blog-grid" style={{ padding: '0 5%', marginBottom: '8rem', maxWidth: '1280px', margin: '0 auto 8rem' }}>
+        {blogs.map((blog, idx) => {
+          const colors = ['pink', 'blue', 'violet'];
+          const colorClass = `blog-card--${colors[idx % colors.length]}`;
+          
+          return (
+            <RevealWrapper variant="up" delay={idx * 100} key={blog.id}>
+              <Link to={`/blog/${blog.id}`} className={`blog-card ${colorClass}`} style={{ display: 'block', textDecoration: 'none', color: 'inherit' }}>
+                <div className="blog-card__visual">
+                  <span className="icon" aria-hidden="true" style={{ fontSize: '4rem' }}>✦</span>
+                  <div className="blog-card__lines">
+                    <i /><i /><i />
+                  </div>
+                  {blog.category}
                 </div>
-                <div className="service-copy" style={{ flex: 1 }}>
-                  <b style={{ fontSize: '1.25rem', marginBottom: '1rem', display: 'block' }}>{blog.title}</b>
-                  <p>{blog.excerpt}</p>
+                <div className="blog-card__body">
+                  <div className="blog-card__tag">{blog.category}</div>
+                  <h3 style={{ color: 'var(--text-dark)' }}>{blog.title}</h3>
+                  <div className="blog-card__meta">
+                    <span>{blog.date}</span>
+                    <div style={{
+                      width: '32px', height: '32px', background: '#f5f7fb', borderRadius: '50%',
+                      display: 'grid', placeItems: 'center', transition: 'all 0.25s', color: 'var(--text-dark)'
+                    }}>
+                      <span className="icon" style={{ transform: 'rotate(-45deg)' }}>→</span>
+                    </div>
+                  </div>
                 </div>
-                <span className="service-arrow" aria-hidden="true">Read More →</span>
               </Link>
-            </div>
-          </RevealWrapper>
-        ))}
+            </RevealWrapper>
+          );
+        })}
       </div>
     </main>
   );
