@@ -1,11 +1,11 @@
 /* ── Premium Service Detail Pages ── */
 
 .service-detail-page {
-  --sd-muted: #718096;
-  --sd-ink: #101827;
-  --sd-border: #10182713;
-  --sd-surface: #f8faff;
-  background: #fff;
+  --sd-muted: #8b94a3;
+  --sd-ink: #ffffff;
+  --sd-border: #ffffff1f;
+  --sd-surface: #101827;
+  background: #03091e;
   min-height: 100vh;
   color: var(--sd-ink);
   overflow: hidden;
@@ -184,13 +184,13 @@
 
 .sd-floating-chip {
   position: absolute;
-  background: rgba(255, 255, 255, 0.85);
+  background: rgba(16, 24, 39, 0.85);
   backdrop-filter: blur(10px);
   padding: 8px 16px;
   border-radius: 99px;
   font-weight: 800;
   font-size: 12px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
   display: flex;
   align-items: center;
   gap: 8px;
@@ -203,7 +203,7 @@
 /* 2. Overview */
 .sd-overview {
   padding: 100px 0;
-  background: #fff;
+  background: transparent;
 }
 .sd-overview-grid {
   display: grid;
@@ -268,7 +268,7 @@
 /* 3. Capabilities */
 .sd-capabilities {
   padding: 100px 0;
-  background: #fafbfe;
+  background: transparent;
   border-top: 1px solid var(--sd-border);
   border-bottom: 1px solid var(--sd-border);
 }
@@ -278,7 +278,7 @@
   gap: 24px;
 }
 .sd-cap-card {
-  background: #fff;
+  background: var(--sd-surface);
   border: 1px solid var(--sd-border);
   border-radius: 24px;
   padding: 40px 30px;
@@ -289,7 +289,7 @@
 }
 .sd-cap-card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 20px 40px rgba(0,0,0,0.04);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.3);
 }
 .sd-cap-icon {
   width: 50px;
@@ -327,7 +327,7 @@
 /* 4. Process */
 .sd-process {
   padding: 120px 0;
-  background: #fff;
+  background: transparent;
 }
 .sd-process-steps {
   max-width: 800px;
@@ -351,7 +351,7 @@
   font-size: 18px;
   flex-shrink: 0;
   z-index: 2;
-  box-shadow: 0 0 0 8px #fff;
+  box-shadow: 0 0 0 8px #03091e;
 }
 .sd-step-content {
   padding-top: 15px;
@@ -420,8 +420,8 @@
   width: 28px;
   height: 28px;
   border-radius: 50%;
-  background: white;
-  color: #101827;
+  background: rgba(255, 255, 255, 0.15);
+  color: #ffffff;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -441,7 +441,7 @@
 }
 .sd-cta-card {
   text-align: center;
-  background: #fafbfe;
+  background: var(--sd-surface);
   border: 1px solid var(--sd-border);
   border-radius: 40px;
   padding: 80px 40px;
