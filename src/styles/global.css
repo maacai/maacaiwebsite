@@ -143,14 +143,14 @@ nav a.nav-active { color: var(--blue); }
 
 /* ── Hero ───────────────────────────────────────────────────── */
 .hero {
-  height: min(980px, 100vh);
-  min-height: 780px;
+  height: min(920px, 100vh);
+  min-height: 720px;
   position: relative;
   display: grid;
   place-items: center;
   text-align: center;
   overflow: hidden;
-  padding-top: 120px;
+  padding-top: 72px;
 }
 .hero > video {
   position: absolute;
@@ -172,7 +172,7 @@ nav a.nav-active { color: var(--blue); }
 .hero-copy {
   position: relative;
   z-index: 2;
-  margin-top: -420px;
+  margin-top: -550px;
 }
 .eyebrow {
   font-size: 10px;
