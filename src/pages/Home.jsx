@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import useTitle from '../hooks/useTitle';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -14,6 +15,7 @@ import Modal from '../components/Modal';
 gsap.registerPlugin(ScrollTrigger);
 
 export default function Home() {
+  useTitle('MAAC AI | Home');
   const [modalState, setModalState] = useState({ isOpen: false, title: '', text: '' });
 
   const openModal = (title, text) => {
@@ -24,26 +26,7 @@ export default function Home() {
     setModalState(prev => ({ ...prev, isOpen: false }));
   };
 
-  // ── Active nav link highlight while scrolling ──────────────
-  useEffect(() => {
-    const sectionIds = ['home', 'about', 'services', 'products', 'industries', 'contact'];
-    const links = document.querySelectorAll('nav a[href^="/#"]');
 
-    const onScroll = () => {
-      const scrollY = window.scrollY + 100;
-      let current = sectionIds[0];
-      for (const id of sectionIds) {
-        const el = document.getElementById(id);
-        if (el && el.offsetTop <= scrollY) current = id;
-      }
-      links.forEach(link => {
-        link.classList.toggle('nav-active', link.getAttribute('href') === `/#${current}`);
-      });
-    };
-    onScroll();
-    window.addEventListener('scroll', onScroll, { passive: true });
-    return () => window.removeEventListener('scroll', onScroll);
-  }, []);
 
   // ── GSAP animations ────────────────────────────────────────
   useEffect(() => {

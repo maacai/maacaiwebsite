@@ -83,7 +83,7 @@ export default function Hero() {
           and create a smarter, more connected future.
         </p>
         <div className="actions">
-          <Button href="#services" variant="dark" showArrow>Get Started</Button>
+          <Button href="/services" variant="dark" showArrow>Get Started</Button>
           <Button href="#home" variant="light" icon="◉">Watch Video</Button>
         </div>
       </RevealWrapper>

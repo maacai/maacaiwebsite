@@ -8,6 +8,8 @@ export const services = [
     shortName: 'AI',
     color: '#3858ff',
     heroGradient: 'linear-gradient(135deg, #0f1d5e 0%, #3858ff 100%)',
+    floatingTop: 'AI Powered',
+    floatingBottom: 'Secure',
     overviewTitle: 'Building systems that think, learn, and adapt.',
     overviewText: 'Artificial Intelligence is no longer just a buzzword—it is a critical driver for competitive advantage. We build bespoke AI models that integrate seamlessly into your workflows, turning raw data into predictive insights and automating complex decision-making processes.',
     metrics: [
@@ -42,6 +44,8 @@ export const services = [
     shortName: 'SaaS',
     color: '#3b82f6',
     heroGradient: 'linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%)',
+    floatingTop: 'Cloud Native',
+    floatingBottom: 'Scalable',
     overviewTitle: 'Architecting platforms that scale effortlessly.',
     overviewText: 'Building a successful Software-as-a-Service requires more than just good code. It requires a resilient architecture, secure multi-tenant data handling, and a frictionless user experience. We build robust SaaS platforms designed to handle millions of requests without breaking a sweat.',
     metrics: [
@@ -76,6 +80,8 @@ export const services = [
     shortName: 'Mobile',
     color: '#8b5cf6',
     heroGradient: 'linear-gradient(135deg, #4c1d95 0%, #8b5cf6 100%)',
+    floatingTop: 'iOS & Android',
+    floatingBottom: 'Fast UX',
     overviewTitle: 'Crafting native experiences that users love.',
     overviewText: 'In a mobile-first world, your app needs to be fast, intuitive, and flawlessly integrated with the device ecosystem. Whether it is a high-performance native iOS app or a cross-platform React Native solution, we build mobile experiences that drive engagement and retention.',
     metrics: [
@@ -110,6 +116,8 @@ export const services = [
     shortName: 'Web',
     color: '#10b981',
     heroGradient: 'linear-gradient(135deg, #064e3b 0%, #10b981 100%)',
+    floatingTop: 'Responsive',
+    floatingBottom: 'Modern Tech',
     overviewTitle: 'Engineering the modern web.',
     overviewText: 'A modern web application must be lightning fast, SEO optimized, and highly interactive. We utilize the latest frameworks like React and Next.js combined with robust backend technologies to deliver web solutions that outperform the competition.',
     metrics: [
@@ -144,6 +152,8 @@ export const services = [
     shortName: 'Design',
     color: '#f43f5e',
     heroGradient: 'linear-gradient(135deg, #831843 0%, #f43f5e 100%)',
+    floatingTop: 'User-Centric',
+    floatingBottom: 'Pixel Perfect',
     overviewTitle: 'Where aesthetics meet absolute functionality.',
     overviewText: 'Great design is invisible. It guides the user effortlessly toward their goal while leaving a lasting brand impression. Our UI/UX process is deeply rooted in user psychology, ensuring every pixel serves a distinct purpose in the user journey.',
     metrics: [
@@ -178,6 +188,8 @@ export const services = [
     shortName: 'Automation',
     color: '#d946ef',
     heroGradient: 'linear-gradient(135deg, #701a75 0%, #d946ef 100%)',
+    floatingTop: 'Efficient',
+    floatingBottom: 'Time Saving',
     overviewTitle: 'Eliminating the mundane, accelerating the complex.',
     overviewText: 'If a task is repetitive, it should be automated. We build custom automation pipelines that connect your disparate software tools, moving data seamlessly and triggering actions without human intervention, saving your team thousands of hours.',
     metrics: [
@@ -212,6 +224,8 @@ export const services = [
     shortName: 'Cloud',
     color: '#0ea5e9',
     heroGradient: 'linear-gradient(135deg, #075985 0%, #0ea5e9 100%)',
+    floatingTop: 'High Uptime',
+    floatingBottom: 'Scalable',
     overviewTitle: 'Building the backbone of modern enterprise.',
     overviewText: 'A resilient cloud infrastructure is the foundation of any scalable digital business. We help organizations migrate to, optimize, and manage their cloud environments on AWS, Azure, and GCP, ensuring high availability and robust security.',
     metrics: [
@@ -246,6 +260,8 @@ export const services = [
     shortName: 'Data',
     color: '#22c55e',
     heroGradient: 'linear-gradient(135deg, #14532d 0%, #22c55e 100%)',
+    floatingTop: 'Data Driven',
+    floatingBottom: 'Insights',
     overviewTitle: 'Unlocking the hidden value in your data.',
     overviewText: 'Data is only as valuable as the insights you can extract from it. We build robust data pipelines and intuitive dashboards that transform siloed, messy data into actionable business intelligence, empowering your team to make informed decisions.',
     metrics: [
@@ -280,6 +296,8 @@ export const services = [
     shortName: 'Marketing',
     color: '#f97316',
     heroGradient: 'linear-gradient(135deg, #7c2d12 0%, #f97316 100%)',
+    floatingTop: 'High ROI',
+    floatingBottom: 'Targeted',
     overviewTitle: 'Engineering growth through data-driven marketing.',
     overviewText: 'We do not just run ads; we build comprehensive growth engines. By combining technical SEO, highly-targeted paid media, and conversion-optimized funnels, we ensure your brand captures attention and converts it into revenue.',
     metrics: [
@@ -314,6 +332,8 @@ export const services = [
     shortName: 'Branding',
     color: '#a855f7',
     heroGradient: 'linear-gradient(135deg, #581c87 0%, #a855f7 100%)',
+    floatingTop: 'Creative',
+    floatingBottom: 'Memorable',
     overviewTitle: 'Defining the soul of your business.',
     overviewText: 'A brand is much more than a logo; it is the gut feeling a customer has about your company. We help organizations distill their core values into a cohesive visual identity and voice that resonates deeply with their target audience.',
     metrics: [
@@ -348,6 +368,8 @@ export const services = [
     shortName: 'Consulting',
     color: '#6366f1',
     heroGradient: 'linear-gradient(135deg, #312e81 0%, #6366f1 100%)',
+    floatingTop: 'Strategic',
+    floatingBottom: 'Expertise',
     overviewTitle: 'Strategic technology leadership for the future.',
     overviewText: 'Making the wrong technology choice can cost years and millions of dollars. Our seasoned architects and strategists provide unbiased, expert guidance to ensure your digital transformation initiatives are aligned with your business objectives and built on solid foundations.',
     metrics: [
@@ -382,6 +404,8 @@ export const services = [
     shortName: 'Security',
     color: '#ef4444',
     heroGradient: 'linear-gradient(135deg, #450a0a 0%, #ef4444 100%)',
+    floatingTop: 'Protected',
+    floatingBottom: 'Encrypted',
     overviewTitle: 'Securing your digital perimeter proactively.',
     overviewText: 'In an era of relentless cyber threats, reactive security is not enough. We implement proactive, defense-in-depth strategies that safeguard your sensitive data, ensure regulatory compliance, and protect your brand reputation from devastating breaches.',
     metrics: [

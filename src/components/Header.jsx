@@ -1,18 +1,22 @@
 import React, { useState, useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import Button from './Button';
 
 const NAV_LINKS = [
-  { label: 'Home', href: '/#home' },
-  { label: 'About', href: '/#about' },
-  { label: 'Services', href: '/#services' },
-  { label: 'Products', href: '/#products' },
-  { label: 'Industries', href: '/#industries' },
-  { label: 'Blog', href: '#' },
-  { label: 'Contact', href: '/#contact' },
+  { label: 'Home', href: '/' },
+  { label: 'About', href: '/about' },
+  { label: 'Services', href: '/services' },
+  { label: 'Products', href: '/products' },
+  { label: 'Industries', href: '/industries' },
+  { label: 'Blog', href: '/blog' },
+  { label: 'Contact', href: '/contact' },
 ];
+
+
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const location = useLocation();
 
   // Close menu on Escape key
   useEffect(() => {
@@ -37,9 +41,9 @@ export default function Header() {
 
   return (
     <header className="header" role="banner">
-      <a className="brand brand-logo" href="#home" aria-label="MAAC AI – Home">
+      <Link className="brand brand-logo" to="/" aria-label="MAAC AI – Home" onClick={closeMenu}>
         <img src="/assets/images/maac-ai-logo.png" alt="MAAC AI" />
-      </a>
+      </Link>
 
       <button
         className="menu"
@@ -52,14 +56,27 @@ export default function Header() {
       </button>
 
       <nav id="main-nav" className={menuOpen ? 'open' : ''} aria-label="Main navigation">
-        {NAV_LINKS.map(({ label, href }) => (
-          <a key={label} href={href} onClick={closeMenu}>
-            {label}
-          </a>
-        ))}
+        {NAV_LINKS.map(({ label, href }) => {
+          // Determine if this nav item should be highlighted
+          // e.g., /services/ai should highlight Services
+          let isActive = location.pathname === href;
+          if (href !== '/' && location.pathname.startsWith(href)) {
+            isActive = true;
+          }
+          return (
+            <Link 
+              key={label} 
+              to={href} 
+              className={isActive ? 'nav-active' : ''}
+              onClick={closeMenu}
+            >
+              {label}
+            </Link>
+          );
+        })}
       </nav>
 
-      <Button href="#contact" variant="dark" showArrow className="lets-talk-btn" onClick={closeMenu}>
+      <Button href="/contact" variant="dark" showArrow className="lets-talk-btn" onClick={closeMenu}>
         Let's Talk
       </Button>
     </header>

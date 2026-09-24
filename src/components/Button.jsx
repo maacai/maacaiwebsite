@@ -1,4 +1,4 @@
-import React from 'react';
+import { Link } from 'react-router-dom';
 
 /**
  * Reusable Button / Link component.
@@ -17,6 +17,9 @@ export default function Button({ href, className, variant = 'dark', onClick, chi
   );
 
   if (href) {
+    if (href.startsWith('/')) {
+      return <Link to={href} className={classes} onClick={onClick}>{inner}</Link>;
+    }
     return <a href={href} className={classes} onClick={onClick}>{inner}</a>;
   }
   return (

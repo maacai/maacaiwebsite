@@ -1,28 +1,30 @@
 import React, { useState } from 'react';
 
 const COMPANY_LINKS = [
-  { label: 'Home', href: '/#home' },
-  { label: 'About Us', href: '/#about' },
+  { label: 'Home', href: '/' },
+  { label: 'About Us', href: '/about' },
   { label: 'Careers', href: '#' },
-  { label: 'Blog', href: '#' },
-  { label: 'Contact', href: '/#contact' },
+  { label: 'Blog', href: '/blog' },
+  { label: 'Contact', href: '/contact' },
 ];
 
 const SERVICE_LINKS = [
-  { label: 'Artificial Intelligence', href: '/#services' },
-  { label: 'Web Development', href: '/#services' },
-  { label: 'Automation', href: '/#services' },
-  { label: 'Cloud Solutions', href: '/#services' },
-  { label: 'AI Agents', href: '/#services' },
+  { label: 'Artificial Intelligence', href: '/services/artificial-intelligence' },
+  { label: 'Web Development', href: '/services/web-development' },
+  { label: 'Automation', href: '/services/automation' },
+  { label: 'Cloud Solutions', href: '/services/cloud-solutions' },
+  { label: 'UI/UX Design', href: '/services/ui-ux-design' },
 ];
 
 const PRODUCT_LINKS = [
-  { label: 'Mine Healer', href: '#products' },
-  { label: 'Daily Need AI', href: '#products' },
-  { label: 'AI CRM', href: '#products' },
-  { label: 'AI ERP', href: '#products' },
-  { label: 'AI Recruiter', href: '#products' },
+  { label: 'Mine Healer', href: '/products/mine-healer' },
+  { label: 'AI CRM', href: '/products/ai-crm' },
+  { label: 'AI HRMS', href: '/products/ai-hrms' },
+  { label: 'AI ERP', href: '/products/ai-erp' },
+  { label: 'AI Recruiter', href: '/products/ai-recruiter' },
 ];
+
+import { Link } from 'react-router-dom';
 
 export default function Footer() {
   const [email, setEmail] = useState('');
@@ -41,9 +43,9 @@ export default function Footer() {
       <div className="footer-grid">
         {/* Brand column */}
         <div>
-          <a className="brand footer-brand brand-logo" href="#home" aria-label="MAAC AI Home">
+          <Link className="brand footer-brand brand-logo" to="/" aria-label="MAAC AI Home">
             <img src="/assets/images/maac-ai-logo.png" alt="MAAC AI" />
-          </a>
+          </Link>
           <p>
             Intelligent Solutions for a Smarter Tomorrow. We build AI-powered products,
             software and digital solutions that drive business growth.
@@ -60,7 +62,7 @@ export default function Footer() {
         <div>
           <b>Company</b>
           {COMPANY_LINKS.map(({ label, href }) => (
-            <a key={label} href={href}>{label}</a>
+            <Link key={label} to={href}>{label}</Link>
           ))}
         </div>
 
@@ -68,7 +70,7 @@ export default function Footer() {
         <div>
           <b>Services</b>
           {SERVICE_LINKS.map(({ label, href }) => (
-            <a key={label} href={href}>{label}</a>
+            <Link key={label} to={href}>{label}</Link>
           ))}
         </div>
 
@@ -76,7 +78,7 @@ export default function Footer() {
         <div>
           <b>Products</b>
           {PRODUCT_LINKS.map(({ label, href }) => (
-            <a key={label} href={href}>{label}</a>
+            <Link key={label} to={href}>{label}</Link>
           ))}
         </div>
 

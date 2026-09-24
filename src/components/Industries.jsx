@@ -1,5 +1,6 @@
 import React, { useRef, useState, useEffect, useCallback } from 'react';
 import { industries } from '../data/industries';
+import { useNavigate } from 'react-router-dom';
 import useTilt from '../hooks/useTilt';
 import RevealWrapper from './RevealWrapper';
 
@@ -25,7 +26,7 @@ function IndustryCard({ icon, name, onCardClick }) {
 }
 
 export default function Industries({ openModal }) {
-
+  const navigate = useNavigate();
   const railRef = useRef(null);
   const [activeIndex, setActiveIndex] = useState(0);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
@@ -122,10 +123,10 @@ export default function Industries({ openModal }) {
               key={idx}
               icon={icon}
               name={name}
-              onCardClick={() => openModal(
-                name,
-                `MAAC AI creates intelligent ${name.toLowerCase()} solutions focused on automation, better digital experiences and measurable business outcomes.`
-              )}
+              onCardClick={() => {
+                const slug = name.toLowerCase().replace(/\s+/g, '-');
+                navigate(`/industries/${slug}`);
+              }}
             />
           ))}
 

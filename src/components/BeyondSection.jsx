@@ -32,7 +32,7 @@ export default function BeyondSection() {
       </div>
 
       <RevealWrapper variant="up" delay={200}>
-        <Button href="#services" variant="dark" showArrow>
+        <Button href="/services" variant="dark" showArrow>
           Explore Our Approach
         </Button>
       </RevealWrapper>

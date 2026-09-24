@@ -81,9 +81,14 @@ export default function Products() {
             <b>{p.sub}</b>
             <p>{p.desc}</p>
 
-            <Button href="#" variant="accent" showArrow>
-              Learn More&nbsp;&nbsp;
-            </Button>
+            {(() => {
+              const productSlug = p.name.toLowerCase().replace(/\s+/g, '-');
+              return (
+                <Button href={`/products/${productSlug}`} variant="accent" showArrow>
+                  Learn More&nbsp;&nbsp;
+                </Button>
+              );
+            })()}
 
             {/* Phone mockup */}
             <div className="phone" aria-hidden="true">
@@ -146,7 +151,7 @@ export default function Products() {
       </RevealWrapper>
 
       <RevealWrapper variant="up" delay={300}>
-        <Button href="#" variant="dark" className="products-all" showArrow>
+        <Button href="/products" variant="dark" className="products-all" showArrow>
           View All Products&nbsp;&nbsp;
         </Button>
       </RevealWrapper>

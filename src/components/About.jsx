@@ -153,7 +153,7 @@ export default function About() {
             products for a smarter, more connected future.
           </p>
           <div className="about-hero-actions">
-            <Button href="#contact" variant="dark" showArrow>Our Journey</Button>
+            <Button href="/contact" variant="dark" showArrow>Our Journey</Button>
             <button className="about-watch-btn" type="button">
               <span className="watch-play">▶</span> Watch Our Story
             </button>
@@ -290,7 +290,7 @@ export default function About() {
               We deliver innovative AI-powered software, apps, and digital solutions
               to help you grow, automate, and stay ahead.
             </p>
-            <Button href="#services" variant="dark" showArrow>Explore Our Services</Button>
+            <Button href="/services" variant="dark" showArrow>Explore Our Services</Button>
           </div>
           <div className="cta-right" aria-hidden="true">
             <div className="cta-script-line">Ideas. Technology. Real Impact.</div>

@@ -15,7 +15,7 @@ export default function ServiceDetails() {
             <p className="service-detail-section-tag">SERVICE NOT FOUND</p>
             <h1>We couldn't find that service.</h1>
             <p>Please return to the services directory and choose a service.</p>
-            <Link to="/#services" className="service-detail-primary-button">
+            <Link to="/services" className="service-detail-primary-button">
               Back to services →
             </Link>
           </div>
@@ -24,13 +24,15 @@ export default function ServiceDetails() {
     );
   }
 
+  document.title = `MAAC AI | ${service.title}`;
+
   return (
     <main className="service-detail-page">
       {/* ── Hero Section ── */}
       <section className="service-detail-hero">
         <div className="service-detail-hero__inner">
           <div className="service-detail-hero__content">
-            <Link to="/#services" className="service-detail-back">
+            <Link to="/services" className="service-detail-back">
               ← Back to Services
             </Link>
             <div className="service-detail-kicker">
@@ -40,10 +42,10 @@ export default function ServiceDetails() {
             <h1>{service.title}</h1>
             <p className="service-detail-hero__description">{service.tagline}</p>
             <div className="service-detail-hero__actions">
-              <Link to="/#contact" className="service-detail-primary-button" style={{ background: service.color }}>
+              <Link to="/contact" className="service-detail-primary-button" style={{ background: service.color }}>
                 Start a project
               </Link>
-              <Link to="/#services" className="service-detail-secondary-button">
+              <Link to="/services" className="service-detail-secondary-button">
                 Explore others
               </Link>
             </div>
@@ -51,17 +53,17 @@ export default function ServiceDetails() {
           <div className="service-detail-visual">
             <div className="service-detail-visual__window">
               <div className="service-detail-visual__glow" style={{ background: service.heroGradient }}></div>
-              <div className="service-detail-visual__icon" style={{ background: service.color }}>
-                <span style={{ fontSize: '32px' }}>{service.icon}</span>
-              </div>
+            </div>
+            <div className="service-detail-visual__icon" style={{ background: service.color }}>
+              <span style={{ fontSize: '32px' }}>{service.icon}</span>
             </div>
             <div className="service-detail-visual__orbit service-detail-visual__orbit--one"></div>
             <div className="service-detail-visual__orbit service-detail-visual__orbit--two"></div>
             <div className="service-detail-visual__floating service-detail-visual__floating--top">
-              <span style={{ background: service.color }}></span> AI Powered
+              <span style={{ background: service.color }}></span> {service.floatingTop}
             </div>
             <div className="service-detail-visual__floating service-detail-visual__floating--bottom">
-              <span style={{ background: service.color }}></span> Secure
+              <span style={{ background: service.color }}></span> {service.floatingBottom}
             </div>
           </div>
         </div>
@@ -202,7 +204,7 @@ export default function ServiceDetails() {
                   Let's turn it into something useful.
                 </h2>
                 <p>Tell us what you are trying to build, improve or automate. We'll help you identify the right direction.</p>
-                <Link to="/#contact" className="service-detail-primary-button" style={{ background: service.color, color: '#fff', border: 'none' }}>
+                <Link to="/contact" className="service-detail-primary-button" style={{ background: service.color, color: '#fff', border: 'none' }}>
                   Talk to MAAC.AI →
                 </Link>
               </div>
