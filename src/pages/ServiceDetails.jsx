@@ -1,24 +1,23 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { services } from '../data/services';
 import RevealWrapper from '../components/RevealWrapper';
+import '../styles/service-details.css';
 
 export default function ServiceDetails() {
   const { id } = useParams();
   const service = services.find(s => s.id === id);
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [id]);
+
   if (!service) {
     return (
-      <main className="service-detail-page service-detail-page--not-found">
-        <div className="service-detail-container">
-          <div className="service-detail-not-found">
-            <p className="service-detail-section-tag">SERVICE NOT FOUND</p>
-            <h1>We couldn't find that service.</h1>
-            <p>Please return to the services directory and choose a service.</p>
-            <Link to="/services" className="service-detail-primary-button">
-              Back to services →
-            </Link>
-          </div>
+      <main className="service-detail-page not-found">
+        <div className="sd-container text-center">
+          <h1>Service Not Found</h1>
+          <Link to="/services" className="sd-btn-secondary">← Back to Services</Link>
         </div>
       </main>
     );
@@ -28,186 +27,157 @@ export default function ServiceDetails() {
 
   return (
     <main className="service-detail-page">
-      {/* ── Hero Section ── */}
-      <section className="service-detail-hero">
-        <div className="service-detail-hero__inner">
-          <div className="service-detail-hero__content">
-            <Link to="/services" className="service-detail-back">
-              ← Back to Services
-            </Link>
-            <div className="service-detail-kicker">
-              <span style={{ background: service.color }}></span>
-              <span style={{ color: service.color }}>{service.shortName}</span>
+      {/* 1. Hero Section */}
+      <section className="sd-hero">
+        <div className="sd-hero-bg" style={{ background: service.heroGradient }}></div>
+        <div className="sd-hero-glow"></div>
+        <div className="sd-container">
+          <RevealWrapper variant="up" className="sd-hero-content">
+            <Link to="/services" className="sd-back-link">← Back to Services</Link>
+            <div className="sd-label" style={{ color: service.color, borderColor: `${service.color}40`, background: `${service.color}15` }}>
+              <span className="sd-label-dot" style={{ background: service.color }}></span>
+              {service.shortName} SERVICE
             </div>
-            <h1>{service.title}</h1>
-            <p className="service-detail-hero__description">{service.tagline}</p>
-            <div className="service-detail-hero__actions">
-              <Link to="/contact" className="service-detail-primary-button" style={{ background: service.color }}>
-                Start a project
+            <h1 className="sd-title">{service.title}</h1>
+            <p className="sd-tagline">{service.tagline}</p>
+            <div className="sd-hero-actions">
+              <Link to="/contact" className="sd-btn-primary" style={{ background: service.color, boxShadow: `0 8px 24px ${service.color}50` }}>
+                Start a project <span className="arrow">→</span>
               </Link>
-              <Link to="/services" className="service-detail-secondary-button">
-                Explore others
-              </Link>
-            </div>
-          </div>
-          <div className="service-detail-visual">
-            <div className="service-detail-visual__window">
-              <div className="service-detail-visual__glow" style={{ background: service.heroGradient }}></div>
-            </div>
-            <div className="service-detail-visual__icon" style={{ background: service.color }}>
-              <span style={{ fontSize: '32px' }}>{service.icon}</span>
-            </div>
-            <div className="service-detail-visual__orbit service-detail-visual__orbit--one"></div>
-            <div className="service-detail-visual__orbit service-detail-visual__orbit--two"></div>
-            <div className="service-detail-visual__floating service-detail-visual__floating--top">
-              <span style={{ background: service.color }}></span> {service.floatingTop}
-            </div>
-            <div className="service-detail-visual__floating service-detail-visual__floating--bottom">
-              <span style={{ background: service.color }}></span> {service.floatingBottom}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ── Overview Section ── */}
-      <section className="service-detail-overview section-anchor">
-        <div className="service-detail-container">
-          <div className="service-detail-overview__grid">
-            <RevealWrapper variant="left">
-              <div className="service-detail-overview__heading">
-                <p className="service-detail-section-tag">WHY IT MATTERS</p>
-                <h2>{service.overviewTitle}</h2>
-              </div>
-            </RevealWrapper>
-            <RevealWrapper variant="right" delay={100}>
-              <div className="service-detail-overview__copy">
-                <p>{service.overviewText}</p>
-                <div className="service-detail-overview__accent" style={{ background: service.color }}></div>
-              </div>
-            </RevealWrapper>
-          </div>
-
-          <div className="service-detail-metrics">
-            {service.metrics.map(([value, label, desc], idx) => (
-              <RevealWrapper variant="up" delay={idx * 80} key={label}>
-                <article className="service-detail-metric">
-                  <span className="service-detail-metric__number" style={{ color: service.color }}>{value}</span>
-                  <div>
-                    <h3>{label}</h3>
-                    <p>{desc}</p>
-                  </div>
-                </article>
-              </RevealWrapper>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── Capabilities Section ── */}
-      <section className="service-detail-capabilities">
-        <div className="service-detail-container">
-          <RevealWrapper>
-            <div className="service-detail-section-heading">
-              <div>
-                <p className="service-detail-section-tag">CAPABILITIES</p>
-                <h2>Everything you need to move forward.</h2>
-              </div>
-              <span className="service-detail-section-number">{service.capabilities.length} / 08</span>
+              <a href="#overview" className="sd-btn-secondary">
+                Learn more
+              </a>
             </div>
           </RevealWrapper>
 
-          <div className="service-detail-capabilities-grid">
+          <RevealWrapper variant="up" delay={200} className="sd-hero-visual">
+            <div className="sd-orb-container">
+              <div className="sd-orb-core" style={{ background: service.color }}>
+                 <span className="sd-orb-icon">{service.icon}</span>
+              </div>
+              <div className="sd-orb-ring ring-1" style={{ borderColor: `${service.color}50` }}></div>
+              <div className="sd-orb-ring ring-2" style={{ borderColor: `${service.color}30` }}></div>
+              
+              <div className="sd-floating-chip chip-top" style={{ color: service.color }}>
+                <span className="dot" style={{ background: service.color }}></span> {service.floatingTop}
+              </div>
+              <div className="sd-floating-chip chip-bottom" style={{ color: service.color }}>
+                <span className="dot" style={{ background: service.color }}></span> {service.floatingBottom}
+              </div>
+            </div>
+          </RevealWrapper>
+        </div>
+      </section>
+
+      {/* 2. Overview Section */}
+      <section id="overview" className="sd-overview">
+        <div className="sd-container">
+          <div className="sd-overview-grid">
+            <RevealWrapper variant="left" className="sd-overview-text">
+              <h2 className="sd-section-title">
+                <span className="eyebrow" style={{ color: service.color }}>OVERVIEW</span>
+                {service.overviewTitle}
+              </h2>
+              <p className="sd-lead">{service.overviewText}</p>
+            </RevealWrapper>
+            <RevealWrapper variant="right" delay={150} className="sd-metrics-grid">
+              {service.metrics.map(([value, label, desc], idx) => (
+                <div className="sd-metric-card" key={idx}>
+                  <h3 className="sd-metric-value" style={{ color: service.color }}>{value}</h3>
+                  <b className="sd-metric-label">{label}</b>
+                  <p className="sd-metric-desc">{desc}</p>
+                </div>
+              ))}
+            </RevealWrapper>
+          </div>
+        </div>
+      </section>
+
+      {/* 3. Capabilities Section */}
+      <section className="sd-capabilities">
+        <div className="sd-container">
+          <RevealWrapper variant="up">
+            <h2 className="sd-section-title text-center" style={{ margin: '0 auto 60px' }}>
+              <span className="eyebrow" style={{ color: service.color }}>CAPABILITIES</span>
+              Everything you need to scale
+            </h2>
+          </RevealWrapper>
+
+          <div className="sd-cap-grid">
             {service.capabilities.map((cap, idx) => (
-              <RevealWrapper variant="up" delay={idx * 65} key={cap.title}>
-                <article className="service-detail-capability-card">
-                  <div className="service-detail-capability-card__number" style={{ color: service.color }}>
-                    {String(idx + 1).padStart(2, '0')}
+              <RevealWrapper variant="up" delay={idx * 80} key={idx}>
+                <div className="sd-cap-card">
+                  <div className="sd-cap-icon" style={{ color: service.color, background: `${service.color}15` }}>
+                    {service.icon}
                   </div>
-                  <div className="service-detail-capability-card__icon">
-                    <span>{service.icon}</span>
-                  </div>
-                  <h3>{cap.title}</h3>
-                  <p>{cap.text}</p>
-                  <span className="service-detail-capability-card__line" style={{ background: service.color }}></span>
-                </article>
+                  <h3 className="sd-cap-title">{cap.title}</h3>
+                  <p className="sd-cap-desc">{cap.text}</p>
+                  <div className="sd-cap-line" style={{ background: service.color }}></div>
+                </div>
               </RevealWrapper>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ── Process Section ── */}
-      <section className="service-detail-process section-anchor">
-        <div className="service-detail-container">
-          <RevealWrapper>
-            <div className="service-detail-section-heading service-detail-section-heading--process">
-              <div>
-                <p className="service-detail-section-tag">OUR APPROACH</p>
-                <h2>A clear path from idea to impact.</h2>
-              </div>
-              <p>We keep every engagement structured, transparent and focused on measurable progress.</p>
-            </div>
+      {/* 4. Process Section */}
+      <section className="sd-process">
+        <div className="sd-container">
+          <RevealWrapper variant="left">
+            <h2 className="sd-section-title" style={{ marginBottom: '50px' }}>
+              <span className="eyebrow" style={{ color: service.color }}>HOW WE WORK</span>
+              A clear path from idea to impact.
+            </h2>
           </RevealWrapper>
 
-          <div className="service-detail-process-list">
+          <div className="sd-process-steps">
             {service.workflow.map(([step, title, text], idx) => (
-              <RevealWrapper variant={idx % 2 === 0 ? 'left' : 'right'} delay={idx * 60} key={title}>
-                <article className="service-detail-process-item">
-                  <span className="service-detail-process-item__step" style={{ color: service.color }}>
-                    {step}
-                  </span>
-                  <div className="service-detail-process-item__body">
-                    <h3>{title}</h3>
-                    <p>{text}</p>
-                  </div>
-                  <span className="service-detail-process-item__indicator" style={{ background: service.color }}></span>
-                </article>
+              <RevealWrapper variant="up" delay={idx * 100} key={idx} className="sd-process-step">
+                <div className="sd-step-number" style={{ color: service.color, background: `${service.color}15` }}>{step}</div>
+                <div className="sd-step-content">
+                  <h3 className="sd-step-title">{title}</h3>
+                  <p className="sd-step-desc">{text}</p>
+                </div>
+                {idx !== service.workflow.length - 1 && <div className="sd-step-connector"></div>}
               </RevealWrapper>
             ))}
-          </div>
-
-          <div className="service-detail-impact">
-            <RevealWrapper variant="left">
-              <div className="service-detail-impact__intro">
-                <p className="service-detail-section-tag">BUSINESS IMPACT</p>
-                <h2>Built to create outcomes, not just deliverables.</h2>
-                <p>Technology only matters when it improves something meaningful for the business and its users.</p>
-              </div>
-            </RevealWrapper>
-            <RevealWrapper variant="right" delay={100}>
-              <div className="service-detail-impact__list">
-                {service.outcomes.map((outcome, idx) => (
-                  <div className="service-detail-impact__item" key={idx}>
-                    <span className="service-detail-impact__number" style={{ color: service.color }}>
-                      {String(idx + 1).padStart(2, '0')}
-                    </span>
-                    <span>{outcome}</span>
-                    <span style={{ color: service.color }}>→</span>
-                  </div>
-                ))}
-              </div>
-            </RevealWrapper>
           </div>
         </div>
       </section>
 
-      {/* ── CTA Section ── */}
-      <section className="service-detail-cta">
-        <div className="service-detail-container">
-          <RevealWrapper>
-            <div className="service-detail-cta__box">
-              <div className="service-detail-cta__orb"></div>
-              <div className="service-detail-cta__content">
-                <p className="service-detail-section-tag">LET'S BUILD</p>
-                <h2>
-                  Have a {service.shortName.toLowerCase()} challenge?<br />
-                  Let's turn it into something useful.
-                </h2>
-                <p>Tell us what you are trying to build, improve or automate. We'll help you identify the right direction.</p>
-                <Link to="/contact" className="service-detail-primary-button" style={{ background: service.color, color: '#fff', border: 'none' }}>
-                  Talk to MAAC.AI →
-                </Link>
-              </div>
+      {/* 5. Benefits / Outcomes */}
+      <section className="sd-outcomes">
+        <div className="sd-container">
+          <div className="sd-outcomes-wrapper" style={{ background: service.heroGradient }}>
+            <RevealWrapper variant="up" className="sd-outcomes-header">
+              <h2 className="sd-outcomes-title">Business Impact</h2>
+              <p className="sd-outcomes-lead">Built to create outcomes, not just deliverables.</p>
+            </RevealWrapper>
+
+            <div className="sd-outcomes-list">
+              {service.outcomes.map((outcome, idx) => (
+                <RevealWrapper variant="up" delay={idx * 100} key={idx}>
+                  <div className="sd-outcome-item">
+                    <div className="sd-outcome-check">✓</div>
+                    <p>{outcome}</p>
+                  </div>
+                </RevealWrapper>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 7. CTA Section */}
+      <section className="sd-cta">
+        <div className="sd-container">
+          <RevealWrapper variant="up">
+            <div className="sd-cta-card">
+              <h2 className="sd-cta-title">Ready to build your {service.shortName} solution?</h2>
+              <p className="sd-cta-desc">Let's discuss how our expertise can accelerate your business growth.</p>
+              <Link to="/contact" className="sd-btn-primary" style={{ background: service.color }}>
+                Get in Touch <span className="arrow">→</span>
+              </Link>
             </div>
           </RevealWrapper>
         </div>
