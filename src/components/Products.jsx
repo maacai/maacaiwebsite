@@ -1,173 +1,72 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React from 'react';
 import { products } from '../data/products';
 import Button from './Button';
 import RevealWrapper from './RevealWrapper';
 
-/**
- * Split a product name so the last word(s) get the pink accent colour,
- * matching the original website's product heading style.
- */
-function splitProductName(product) {
-  const words = product.name.split(' ');
-  if (product.accent) {
-    const accentIdx = product.name.indexOf(product.accent);
-    if (accentIdx > 0) {
-      return {
-        main: product.name.slice(0, accentIdx).trim(),
-        highlight: product.accent,
-      };
-    }
-  }
-  // Default: first word plain, rest highlighted
-  return { main: words[0], highlight: words.slice(1).join(' ') };
-}
-
 export default function Products() {
-  const [selectedIdx, setSelectedIdx] = useState(0);
-  const featureRef = useRef(null);
-
-  const selectProduct = (idx) => {
-    const next = ((idx % products.length) + products.length) % products.length;
-    setSelectedIdx(next);
-  };
-
-  // Slide-in animation on product change
-  useEffect(() => {
-    if (featureRef.current) {
-      featureRef.current.animate(
-        [
-          { opacity: 0.35, transform: 'translateX(-12px)' },
-          { opacity: 1, transform: 'none' },
-        ],
-        { duration: 350, easing: 'ease-out' }
-      );
-    }
-  }, [selectedIdx]);
-
-  const p = products[selectedIdx];
-  const { main, highlight } = splitProductName(p);
-  // Sidebar list excludes the currently featured product
-  const sidebarProducts = products.filter((_, i) => i !== selectedIdx);
+  const featuredProduct = products[0]; // Mine Healer
+  const futureProducts = products.slice(1, 9); // Limit to grid size
 
   return (
     <section id="products" className="section products" aria-label="Featured Products">
-      <RevealWrapper variant="up">
-        <div className="eyebrow">FEATURED PRODUCTS</div>
-        <h2>Our <em>AI-Driven Products</em></h2>
-        <p className="lead">Innovative products designed to make everyday life and business smarter.</p>
-      </RevealWrapper>
-
-      <RevealWrapper variant="up" delay={200} className="product-stage">
-        {/* Previous button */}
-        <button
-          className="product-nav product-prev"
-          aria-label="Previous product"
-          onClick={() => selectProduct(selectedIdx - 1)}
-        >
-          ←
-        </button>
-
-        <div className="product-shell">
-          {/* Feature panel */}
-          <article
-            className="product-feature"
-            ref={featureRef}
-            aria-label={`Featured: ${p.name}`}
-          >
+      <div className="products-container">
+        {/* Left Side: Featured Product */}
+        <RevealWrapper variant="left" className="featured-product-card">
+          <div className="featured-content">
             <div className="tiny">FEATURED PRODUCT</div>
             <h3>
-              {main} <span>{highlight}</span>
+              {featuredProduct.name.split(' ')[0]} <span>{featuredProduct.name.split(' ')[1]}</span>
             </h3>
-            <b>{p.sub}</b>
-            <p>{p.desc}</p>
-
-            {(() => {
-              const productSlug = p.name.toLowerCase().replace(/\s+/g, '-');
-              return (
-                <Button href={`/products/${productSlug}`} variant="accent" showArrow>
-                  Learn More&nbsp;&nbsp;
-                </Button>
-              );
-            })()}
-
-            {/* Phone mockup */}
-            <div className="phone" aria-hidden="true">
-              <b>{p.icon} {p.name}</b>
-              <p style={{ fontSize: '12px' }}>How are you feeling today?</p>
-              <div style={{
-                margin: '26px 0',
-                padding: '18px 8px',
-                background: '#fff',
-                borderRadius: '14px',
-              }}>
+            <b className="featured-sub">{featuredProduct.sub}</b>
+            <p>{featuredProduct.desc}</p>
+            <Button href="/products/mine-healer" variant="accent" showArrow style={{ background: '#ee3b9a', borderColor: '#ee3b9a' }}>
+              Learn More&nbsp;&nbsp;
+            </Button>
+          </div>
+          
+          <div className="featured-visual">
+            <div className="phone-mockup">
+              <div className="phone-notch"></div>
+              <b style={{ marginTop: '10px' }}>{featuredProduct.icon} {featuredProduct.name}</b>
+              <p>How are you feeling today?</p>
+              <div className="phone-card">
                 Talk to a<br /><b>Professional</b>
               </div>
-              <div style={{
-                background: '#2370ff',
-                color: '#fff',
-                padding: '12px',
-                borderRadius: '9px',
-                fontSize: '10px',
-              }}>
+              <div className="phone-btn">
                 Book Session
               </div>
             </div>
-          </article>
+            {/* Floating icons around phone */}
+            <div className="floating-icon icon-1">♡</div>
+            <div className="floating-icon icon-2">✧</div>
+            <div className="floating-icon icon-3">☺</div>
+          </div>
+        </RevealWrapper>
 
-          {/* Product sidebar list */}
-          <aside className="product-list" aria-label="All AI products">
-            <div className="tiny">OUR AI PRODUCTS</div>
-            <div role="list">
-              {products.map((prod, i) => (
-                i !== selectedIdx && (
-                  <button
-                    key={i}
-                    className={`product-btn${i === selectedIdx ? ' active' : ''}`}
-                    type="button"
-                    role="listitem"
-                    aria-pressed={i === selectedIdx}
-                    onClick={() => selectProduct(i)}
-                  >
-                    <i aria-hidden="true">{prod.icon}</i>
-                    <span>
-                      <b>{prod.name}</b>
-                      <small>{prod.sub}</small>
-                    </span>
-                  </button>
-                )
-              ))}
+        {/* Right Side: Future Products */}
+        <div className="future-products-section">
+          <RevealWrapper variant="right" className="future-header">
+            <div className="future-top">
+              <span className="eyebrow" style={{ color: '#4058ff' }}>FUTURE PRODUCTS</span>
+              <span className="concept-pill">10+ concepts</span>
             </div>
-          </aside>
+            <h2>Intelligent products,<br/>ready to scale.</h2>
+          </RevealWrapper>
+
+          <RevealWrapper variant="up" delay={200} className="future-grid">
+            {futureProducts.map((prod, i) => (
+              <div key={i} className="future-card">
+                <i>{prod.icon}</i>
+                <b>{prod.name}</b>
+                <span className="arrow">→</span>
+              </div>
+            ))}
+          </RevealWrapper>
+
+          <RevealWrapper variant="up" delay={400} className="future-footer">
+            <a href="/products" className="view-all-link">View all products →</a>
+          </RevealWrapper>
         </div>
-
-        {/* Next button */}
-        <button
-          className="product-nav product-next"
-          aria-label="Next product"
-          onClick={() => selectProduct(selectedIdx + 1)}
-        >
-          →
-        </button>
-      </RevealWrapper>
-
-      <RevealWrapper variant="up" delay={300}>
-        <Button href="/products" variant="dark" className="products-all" showArrow>
-          View All Products&nbsp;&nbsp;
-        </Button>
-      </RevealWrapper>
-
-      {/* Dot indicators */}
-      <div className="product-dots" aria-label="Product pagination" role="list">
-        {products.map((_, i) => (
-          <i
-            key={i}
-            className={i === selectedIdx ? 'active' : ''}
-            role="listitem"
-            aria-label={`Product ${i + 1}${i === selectedIdx ? ' (selected)' : ''}`}
-            onClick={() => selectProduct(i)}
-            style={{ cursor: 'pointer' }}
-          />
-        ))}
       </div>
     </section>
   );
