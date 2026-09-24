@@ -143,14 +143,14 @@ nav a.nav-active { color: var(--blue); }
 
 /* ── Hero ───────────────────────────────────────────────────── */
 .hero {
-  height: min(920px, 100vh);
-  min-height: 720px;
+  height: min(980px, 100vh);
+  min-height: 780px;
   position: relative;
   display: grid;
   place-items: center;
   text-align: center;
   overflow: hidden;
-  padding-top: 72px;
+  padding-top: 120px;
 }
 .hero > video {
   position: absolute;
@@ -172,19 +172,19 @@ nav a.nav-active { color: var(--blue); }
 .hero-copy {
   position: relative;
   z-index: 2;
-  margin-top: -500px;
+  margin-top: -420px;
 }
 .eyebrow {
   font-size: 10px;
   letter-spacing: .36em;
   font-weight: 700;
   color: #7181c8;
-  margin-bottom: 18px;
+  margin-bottom: 24px;
 }
 .hero h1, .beyond h2 {
   font-size: clamp(44px, 5vw, 78px);
   line-height: .96;
-  margin: 0;
+  margin: 0 0 24px 0;
   font-weight: 800;
   letter-spacing: -.055em;
 }
@@ -194,12 +194,12 @@ nav a.nav-active { color: var(--blue); }
   background-clip: text;
   color: transparent;
 }
-.hero p, .lead, .beyond p, .smart p { color: var(--muted); line-height: 1.65; font-size: 14px; }
-.actions { display: flex; gap: 10px; justify-content: center; margin-top: 22px; }
+.hero p, .lead, .beyond p, .smart p { color: var(--muted); line-height: 1.65; font-size: 14px; margin-bottom: 36px; }
+.actions { display: flex; gap: 10px; justify-content: center; margin-top: 10px; }
 .stats {
   position: absolute;
   z-index: 3;
-  bottom: 35px;
+  bottom: 60px;
   width: min(1120px, 88%);
   display: grid;
   grid-template-columns: repeat(4, 1fr);
