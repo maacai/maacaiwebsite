@@ -1,6 +1,5 @@
 import React, { useRef, useState, useEffect, useCallback } from 'react';
 import { industries } from '../data/industries';
-import { useNavigate } from 'react-router-dom';
 import useTilt from '../hooks/useTilt';
 import RevealWrapper from './RevealWrapper';
 
@@ -26,7 +25,6 @@ function IndustryCard({ icon, name, onCardClick }) {
 }
 
 export default function Industries({ openModal }) {
-  const navigate = useNavigate();
   const railRef = useRef(null);
   const [activeIndex, setActiveIndex] = useState(0);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
@@ -124,8 +122,9 @@ export default function Industries({ openModal }) {
               icon={icon}
               name={name}
               onCardClick={() => {
-                const slug = name.toLowerCase().replace(/\s+/g, '-');
-                navigate(`/industries/${slug}`);
+                if (openModal) {
+                  openModal(name, `Learn more about our innovative ${name} solutions.`);
+                }
               }}
             />
           ))}
