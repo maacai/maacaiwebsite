@@ -1,94 +1,13 @@
-import React, { useRef, useState, useEffect, useCallback } from 'react';
+import React, { useState } from 'react';
 import { industries } from '../data/industries';
-import useTilt from '../hooks/useTilt';
 import RevealWrapper from './RevealWrapper';
 
-/** Industry card with 3D tilt */
-function IndustryCard({ icon, name, onCardClick }) {
-  const { ref, onMouseMove, onMouseLeave } = useTilt({ max: 14, scale: 1.05, speed: 260 });
-  return (
-    <button
-      ref={ref}
-      className="industry-card"
-      type="button"
-      role="listitem"
-      aria-label={`${name} industry`}
-      onMouseMove={onMouseMove}
-      onMouseLeave={onMouseLeave}
-      onClick={onCardClick}
-    >
-      <span className="tilt-shine" aria-hidden="true" />
-      <i aria-hidden="true">{icon}</i>
-      <b>{name}</b>
-    </button>
-  );
-}
-
 export default function Industries({ openModal, isHomePage = false }) {
-  const railRef = useRef(null);
   const [activeIndex, setActiveIndex] = useState(0);
-  const [canScrollLeft, setCanScrollLeft] = useState(false);
-  const [canScrollRight, setCanScrollRight] = useState(true);
-
-  const getCards = useCallback(() =>
-    Array.from(railRef.current?.querySelectorAll('.industry-card') || []),
-  []);
-
-  const getMaxScroll = useCallback(() =>
-    Math.max(0, (railRef.current?.scrollWidth || 0) - (railRef.current?.clientWidth || 0)),
-  []);
-
-  const updateControls = useCallback(() => {
-    if (!railRef.current) return;
-    const x = railRef.current.scrollLeft;
-    const max = getMaxScroll();
-    setCanScrollLeft(x > 2);
-    setCanScrollRight(x < max - 2);
-
-    // Find which card is closest to the left edge
-    const cards = getCards();
-    let best = 0, bestDist = Infinity;
-    cards.forEach((card, i) => {
-      const d = Math.abs(card.offsetLeft - railRef.current.offsetLeft - x);
-      if (d < bestDist) { bestDist = d; best = i; }
-    });
-    setActiveIndex(best);
-  }, [getCards, getMaxScroll]);
-
-  const goToIndustry = useCallback((index) => {
-    const cards = getCards();
-    if (!cards.length || !railRef.current) return;
-    const safeIndex = Math.max(0, Math.min(cards.length - 1, index));
-    const target = safeIndex === cards.length - 1
-      ? getMaxScroll()
-      : Math.min(getMaxScroll(), cards[safeIndex].offsetLeft - railRef.current.offsetLeft);
-    railRef.current.scrollTo({ left: target, behavior: 'smooth' });
-  }, [getCards, getMaxScroll]);
-
-  const moveIndustries = useCallback((direction) => {
-    const cards = getCards();
-    if (!cards.length || !railRef.current) return;
-    const x = railRef.current.scrollLeft;
-    const max = getMaxScroll();
-    if (direction < 0 && x <= 2) { goToIndustry(0); return; }
-    if (direction > 0 && x >= max - 2) { goToIndustry(cards.length - 1); return; }
-    goToIndustry(activeIndex + direction);
-  }, [getCards, getMaxScroll, goToIndustry, activeIndex]);
-
-  useEffect(() => {
-    const rail = railRef.current;
-    if (!rail) return;
-    const handleResize = () => {
-      rail.scrollLeft = Math.min(rail.scrollLeft, getMaxScroll());
-      updateControls();
-    };
-    window.addEventListener('resize', handleResize);
-    updateControls();
-    return () => window.removeEventListener('resize', handleResize);
-  }, [getMaxScroll, updateControls]);
+  const selectedIndustry = industries[activeIndex] || industries[0];
 
   return (
-    <section id="industries" className={`section industries ${!isHomePage ? 'about-page' : ''}`} aria-label="Industries we empower">
+    <section id="industries" className={`section industries-new ${!isHomePage ? 'about-page' : ''}`} aria-label="Industries we empower">
       {!isHomePage ? (
         <div style={{ width: '100%', marginBottom: '80px', marginTop: '20px' }}>
           <RevealWrapper variant="up">
@@ -110,64 +29,52 @@ export default function Industries({ openModal, isHomePage = false }) {
         </RevealWrapper>
       )}
 
-      <RevealWrapper variant="up" delay={200} className="rail-wrap">
-        <button
-          className="rail-btn prev"
-          aria-label="Scroll industries left"
-          disabled={!canScrollLeft}
-          onClick={() => moveIndustries(-1)}
-        >
-          ←
-        </button>
+      <RevealWrapper variant="up" delay={200}>
+        <div className="industry-grid-layout">
+          <div className="industry-grid-list">
+            {industries.map(({ icon, name }, idx) => (
+              <button 
+                key={idx}
+                className={`industry-grid-btn ${idx === activeIndex ? 'active' : ''}`}
+                onClick={() => setActiveIndex(idx)}
+                aria-label={`Select ${name} industry`}
+              >
+                <div className="icon-box">
+                  <i aria-hidden="true">{icon}</i>
+                </div>
+                <span>{name}</span>
+                <span className="arrow">→</span>
+              </button>
+            ))}
+          </div>
 
-        <div
-          className="industry-rail"
-          role="list"
-          aria-label="Industries carousel"
-          ref={railRef}
-          onScroll={updateControls}
-          tabIndex={0}
-        >
-          {industries.map(({ icon, name }, idx) => (
-            <IndustryCard
-              key={idx}
-              icon={icon}
-              name={name}
-              onCardClick={() => {
+          <div className="industry-grid-panel">
+            <div className="panel-icon" data-color={activeIndex % 4}>
+              <i aria-hidden="true">{selectedIndustry.icon}</i>
+            </div>
+            <div className="eyebrow">SELECTED INDUSTRY</div>
+            <h3>{selectedIndustry.name}</h3>
+            <p>Learn more about our innovative {selectedIndustry.name} solutions.</p>
+            <button 
+              className="panel-link"
+              onClick={() => {
                 if (openModal) {
-                  openModal(name, `Learn more about our innovative ${name} solutions.`);
+                  openModal(selectedIndustry.name, `Learn more about our innovative ${selectedIndustry.name} solutions.`);
                 }
               }}
-            />
-          ))}
-
+            >
+              Build for {selectedIndustry.name} <span>→</span>
+            </button>
+            <div className="industry-grid-bars" aria-hidden="true">
+              <div className="bar"></div>
+              <div className="bar"></div>
+              <div className="bar"></div>
+              <div className="bar"></div>
+              <div className="bar"></div>
+            </div>
+          </div>
         </div>
-
-        <button
-          className="rail-btn next"
-          aria-label="Scroll industries right"
-          disabled={!canScrollRight}
-          onClick={() => moveIndustries(1)}
-        >
-          →
-        </button>
       </RevealWrapper>
-
-      {/* Dot indicators */}
-      <div className="industry-dots" role="tablist" aria-label="Industry navigation dots">
-        {industries.map((_, idx) => (
-          <button
-            key={idx}
-            className={`industry-dot${idx === activeIndex ? ' active' : ''}`}
-            type="button"
-            role="tab"
-            aria-selected={idx === activeIndex}
-            aria-label={`Go to industry ${idx + 1}`}
-            tabIndex={idx === activeIndex ? 0 : -1}
-            onClick={() => goToIndustry(idx)}
-          />
-        ))}
-      </div>
     </section>
   );
 }
