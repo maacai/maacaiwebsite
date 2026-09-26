@@ -59,12 +59,12 @@ const MAP_PINS = [
   { className: 'map-office',  label: 'MAAC AI Office',                 place: 'MAAC AI · Sector 62, Noida' },
 ];
 
-export default function Contact() {
+export default function Contact({ isContactPage = false }) {
   return (
-    <section id="contact" className="smart section" aria-label="Contact and location">
+    <section id="contact" className={`smart section ${isContactPage ? 'contact-page-hero' : ''}`} aria-label="Contact and location">
       {/* Left copy column */}
       <RevealWrapper variant="left" className="smart-copy">
-        <div className="eyebrow">OUR LOCATION</div>
+        <div className="eyebrow section-pill">OUR LOCATION</div>
         <h2>
           Let's Build a Smarter<br />
           Tomorrow, <em>Together</em>

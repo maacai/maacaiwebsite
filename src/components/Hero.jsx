@@ -57,7 +57,7 @@ export default function Hero() {
 
       {/* Hero content */}
       <RevealWrapper variant="up" className="hero-copy">
-        <div className="eyebrow">AI · INNOVATION · IMPACT</div>
+        <div className="eyebrow section-pill">AI · INNOVATION · IMPACT</div>
         <h1>
           Human Intelligence<br />
           <span id="heroDynamic" ref={dynamicRef} aria-live="polite" aria-atomic="true">

@@ -139,7 +139,7 @@ export default function About() {
       {/* Hero */}
       <div className="about-hero">
         <RevealWrapper variant="left" className="about-hero-content">
-          <div className="about-eyebrow">OUR STORY</div>
+          <div className="about-eyebrow section-pill">OUR STORY</div>
           <h2 className="about-h1">
             About <em className="gradient-text">Us</em>
           </h2>
@@ -233,7 +233,7 @@ export default function About() {
       {/* Values */}
       <div className="about-values">
         <div className="about-section-header">
-          <div className="about-eyebrow center">OUR VALUES</div>
+          <div className="about-eyebrow center section-pill">OUR VALUES</div>
           <h2 className="about-section-h2 center">What Drives Everything We Do</h2>
           <p className="about-section-sub">
             Our core values shape the way we think, build, and collaborate — every single day.
@@ -251,7 +251,7 @@ export default function About() {
       {/* Team */}
       <div className="about-team">
         <div className="about-section-header">
-          <div className="about-eyebrow center">THE TEAM</div>
+          <div className="about-eyebrow center section-pill">THE TEAM</div>
           <h2 className="about-section-h2 center">Meet the Minds Behind MAAC AI</h2>
           <p className="about-section-sub">
             A passionate group of technologists, designers, and dreamers — building the future of AI.
@@ -281,7 +281,7 @@ export default function About() {
       <div className="about-cta">
         <RevealWrapper variant="up" className="about-cta-inner">
           <div className="cta-left">
-            <div className="cta-tag">OUR SERVICES</div>
+            <div className="cta-tag section-pill">OUR SERVICES</div>
             <h2 className="about-cta-h2">
               Smart Solutions<br />
               for <em className="gradient-text">Your Business</em>

@@ -7,7 +7,7 @@ export default function BeyondSection() {
   return (
     <section className="beyond" aria-label="Go Beyond section">
       <RevealWrapper variant="up" className="beyond-copy">
-        <div className="eyebrow">GO BEYOND</div>
+        <div className="eyebrow section-pill">GO BEYOND</div>
         <h2>
           Deeper Technology<br />
           <em>Greater Possibilities</em>

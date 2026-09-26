@@ -59,7 +59,7 @@ export default function Products({ isHomePage = false }) {
         <div className="future-products-section">
           <RevealWrapper variant="right" className="future-header">
             <div className="future-top">
-              <span className="eyebrow" style={{ color: '#4058ff' }}>FUTURE PRODUCTS</span>
+              <span className="eyebrow section-pill" style={{ color: '#786dff' }}>FUTURE PRODUCTS</span>
               <span className="concept-pill">10+ concepts</span>
             </div>
             <h2>Intelligent products,<br/>ready to scale.</h2>

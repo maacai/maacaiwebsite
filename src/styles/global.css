@@ -181,6 +181,35 @@ nav a.nav-active { color: var(--blue); }
   color: #7181c8;
   margin-bottom: 24px;
 }
+
+/* ── Reusable pill badge (matches OUR MISSION style) ─────────── */
+.section-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .36em;
+  color: #786dff;
+  text-transform: uppercase;
+  background: rgba(120, 109, 255, .08);
+  border: 1px solid rgba(120, 109, 255, .18);
+  border-radius: 999px;
+  padding: 6px 18px;
+  margin-bottom: 20px;
+}
+.section-pill::before,
+.section-pill::after {
+  content: '';
+  display: inline-block;
+  width: 24px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #786dff);
+  flex-shrink: 0;
+}
+.section-pill::after {
+  background: linear-gradient(90deg, #786dff, transparent);
+}
 .hero h1, .beyond h2 {
   font-size: clamp(44px, 5vw, 78px);
   line-height: .96;
@@ -748,6 +777,19 @@ nav a.nav-active { color: var(--blue); }
   overflow: hidden;
 }
 .smart-copy { padding: 58px 30px 48px clamp(24px, 5vw, 92px); position: relative; z-index: 2; }
+
+/* Contact page hero override */
+.smart.contact-page-hero {
+  border-top: none;
+  min-height: 640px;
+}
+.smart.contact-page-hero .smart-copy {
+  padding-top: 130px;
+}
+.smart.contact-page-hero .map {
+  padding-top: 80px;
+}
+
 .smart .eyebrow { text-align: left; margin-bottom: 10px; }
 .smart h2 { font-size: clamp(35px, 3.6vw, 55px); line-height: .96; }
 .smart h2 em {
@@ -1209,6 +1251,7 @@ nav a.nav-active { color: var(--blue); }
   .phone { width: 175px; height: 330px; }
   .smart { grid-template-columns: 1fr; }
   .smart-copy { padding: 55px 5vw; }
+  .smart.contact-page-hero .smart-copy { padding: 110px 5vw 55px; }
   .map { min-height: 520px; background-size: cover; }
   .contact-cards { max-width: 760px; }
   .contact-stats { max-width: 720px; }
@@ -1249,6 +1292,7 @@ nav a.nav-active { color: var(--blue); }
   .product-stage { grid-template-columns: 1fr; }
   .product-nav { display: none; }
   .smart-copy { padding: 50px 18px; }
+  .smart.contact-page-hero .smart-copy { padding: 100px 18px 50px; }
   .contact-cards { grid-template-columns: 1fr; }
   .contact-cards div { border-right: 0; border-bottom: 1px solid #edf0f7; }
   .contact-stats { grid-template-columns: repeat(2, 1fr); gap: 18px; }

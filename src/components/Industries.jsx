@@ -20,7 +20,7 @@ export default function Industries({ openModal, isHomePage = false }) {
         </div>
       ) : (
         <RevealWrapper variant="up">
-          <div className="eyebrow">INDUSTRIES WE EMPOWER</div>
+          <div className="eyebrow section-pill">INDUSTRIES WE EMPOWER</div>
           <h2>We Serve a Wide Range of <em>Industries</em></h2>
           <p className="lead">
             Innovative solutions tailored for every industry, helping businesses transform,

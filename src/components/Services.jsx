@@ -51,7 +51,7 @@ export default function Services({ isHomePage = false }) {
         </div>
       ) : (
         <RevealWrapper variant="up">
-          <div className="eyebrow">WHAT WE DO</div>
+          <div className="eyebrow section-pill">WHAT WE DO</div>
           <h2>Transforming Ideas Into <em>Intelligent Solutions</em></h2>
           <p className="lead">
             We combine AI, technology, and creativity to build digital solutions that help
