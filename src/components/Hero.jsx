@@ -9,7 +9,7 @@ const PHRASES = ['Meets AI', 'Powered by AI', 'Creates Tomorrow', 'Builds Smarte
 const STATS = [
   { value: '50+', label: 'Projects Delivered' },
   { value: '20+', label: 'Global Clients' },
-  { value: '3+',  label: 'Years of Innovation' },
+  { value: '3+', label: 'Years of Innovation' },
   { value: '100%', label: 'Commitment to Your Growth' },
 ];
 
@@ -52,18 +52,8 @@ export default function Hero() {
 
       {/* Gradient overlay */}
       <div className="hero-shade" aria-hidden="true" />
-      
-      {/* Vercel-style floating effects for Hero */}
-      <div className="hero-visual-effects">
-        <div className="service-detail-visual__orbit service-detail-visual__orbit--one" style={{ position: 'absolute', opacity: 0.3 }}></div>
-        <div className="service-detail-visual__orbit service-detail-visual__orbit--two" style={{ position: 'absolute', opacity: 0.15 }}></div>
-        <div className="service-detail-visual__floating service-detail-visual__floating--top" style={{ position: 'absolute', top: '15%', right: '10%' }}>
-          <span style={{ background: '#3858ff' }}></span> Secure & Fast
-        </div>
-        <div className="service-detail-visual__floating service-detail-visual__floating--bottom" style={{ position: 'absolute', bottom: '25%', left: '8%' }}>
-          <span style={{ background: '#10b981' }}></span> AI Powered
-        </div>
-      </div>
+
+
 
       {/* Hero content */}
       <RevealWrapper variant="up" className="hero-copy">
