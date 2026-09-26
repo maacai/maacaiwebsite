@@ -31,7 +31,7 @@ export default function Products({ isHomePage = false }) {
             </h3>
             <b className="featured-sub">{featuredProduct.sub}</b>
             <p>{featuredProduct.desc}</p>
-            <Button href="/products/mine-healer" variant="accent" showArrow style={{ background: '#ee3b9a', borderColor: '#ee3b9a' }}>
+            <Button variant="accent" showArrow style={{ background: '#ee3b9a', borderColor: '#ee3b9a', cursor: 'default' }}>
               Learn More&nbsp;&nbsp;
             </Button>
           </div>
