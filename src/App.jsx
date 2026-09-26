@@ -15,7 +15,6 @@ import ProductsPage from './pages/ProductsPage';
 import ProductDetailPage from './pages/ProductDetailPage';
 import IndustriesPage from './pages/IndustriesPage';
 import BlogPage from './pages/BlogPage';
-import BlogDetailPage from './pages/BlogDetailPage';
 import ContactPage from './pages/ContactPage';
 import NotFound from './pages/NotFound';
 
@@ -57,7 +56,6 @@ export default function App() {
         <Route path="/products/:id" element={<ProductDetailPage />} />
         <Route path="/industries" element={<IndustriesPage />} />
         <Route path="/blog" element={<BlogPage />} />
-        <Route path="/blog/:id" element={<BlogDetailPage />} />
         <Route path="/contact" element={<ContactPage />} />
         <Route path="*" element={<NotFound />} />
       </Routes>

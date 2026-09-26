@@ -25,7 +25,7 @@ export default function BlogPage() {
           
           return (
             <RevealWrapper variant="up" delay={idx * 100} key={blog.id}>
-              <Link to={`/blog/${blog.id}`} className={`blog-card ${colorClass}`} style={{ display: 'block', textDecoration: 'none', color: 'inherit' }}>
+              <div className={`blog-card ${colorClass}`} style={{ display: 'block', textDecoration: 'none', color: 'inherit' }}>
                 <div className="blog-card__visual">
                   <span className="icon" aria-hidden="true" style={{ fontSize: '4rem' }}>✦</span>
                   <div className="blog-card__lines">
@@ -46,7 +46,7 @@ export default function BlogPage() {
                     </div>
                   </div>
                 </div>
-              </Link>
+              </div>
             </RevealWrapper>
           );
         })}

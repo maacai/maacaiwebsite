@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import gsap from 'gsap';
+import AboutHero from '../components/AboutHero';
 import About from '../components/About';
 import useTitle from '../hooks/useTitle';
 
@@ -29,7 +30,8 @@ export default function AboutPage() {
   }, []);
 
   return (
-    <main id="main-content">
+    <main id="main-content" className="about-page-main">
+      <AboutHero />
       <About />
     </main>
   );
